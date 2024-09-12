@@ -1,0 +1,8 @@
+<div class="cont-<%= message.user.id %>">
+  <div class="w-full max-w-[40%] p-5 rounded-sm mb-10 bg-blue-700 msg-<%= message.user.id %> " >
+    <% unless message.room.is_private %>
+      <h6 class="name"> <%= message.user.username %> </h6>
+    <% end %>
+  <%= message.content %>
+  </div>
+</div>
