@@ -1,6 +1,0 @@
-<div class="form-group fixed bottom-0 w-90 ">
-  <%= form_with(model: [@single_room ,@message], remote: true, class: "d-flex" ) do |f| %>
-    <%= f.text_field :content, id: 'chat-text', class: "form-control w-100vh overflow-scroll ", autocomplete: 'off' %>
-    <%= f.submit data: { disable_with: false }, class: "bg-blue-500 px-3 py-2 rounded-md hover:bg-blue-300 " %>
-  <% end %>
-</div>

@@ -1,0 +1,7 @@
+.cont-#{message.user.id}
+  .message-box.msg-#{message.user.id}
+    - unless message.room.is_private
+      h6.name.font-semibold.text-gray-700
+      = message.user.username
+    p.mt-1.text-gray-800
+    = message.content
