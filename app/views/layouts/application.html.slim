@@ -12,21 +12,19 @@ html
     link rel="manifest" href="/manifest.json"
     link rel="icon" href="/icon.png" type="image/png"
     link rel="icon" href="/icon.svg" type="image/svg+xml"
+    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" 
     link rel="apple-touch-icon" href="/icon.png"
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-    style
-      | .msg-#{current_user&.id} {
-      |   background-color: #007bff !important;
-      |   padding: 10px;
-      |   border-radius: 10px;
-      | }
-      | .cont-#{current_user&.id} {
-      |   display: flex;
-      |   justify-content: flex-end;
-      | }
+  style
+    .msg-#{current_user&.id}
+      background-color: #007bff !important
+      padding: 10px
+    .cont-#{current_user&.id}
+      display: flex
+      justify-content: flex-end
 
   body
     main.container.mx-auto.mt-28.px-5.contents

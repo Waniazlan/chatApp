@@ -1,27 +1,30 @@
 .px-auto.mx-auto.py-3.mt-2
- = link_to 'Sign Out', signout_path, method: :delete, class: "ml-3 text-md font-semibold transition duration-150 ease-out hover:ease-in text-white bg-blue-400 rounded-md py-3 px-4 hover:text-blue-800 hover: bg-blue-700 "
-.flex.gap-4.bg-blue-100.px-5.py-2  
-  .col-span-2
-    h5.font-bold.py-2.text-center Hi #{@current_user.username}
-    h4.text-black.font-semibold All Users
-    div.bg-blue-100.w-full.overflow-scroll.mx-auto
-      = turbo_stream_from "users"
-      #users
-        = render @users
+  = link_to 'Log out', signout_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "ml-3 text-md font-semibold transition duration-150 ease-out hover:ease-in text-white bg-blue-400 rounded-md py-3 px-4 hover:text-blue-800 hover: bg-blue-700 "
+  / = link_to 'Sign Out', signout_path, method: :delete, class: "ml-3 text-md font-semibold transition duration-150 ease-out hover:ease-in text-white bg-blue-400 rounded-md py-3 px-4 hover:text-blue-800 hover: bg-blue-700 "
 
-    h4.mt-10 Group
-    = render partial: "layouts/new_room_form"
-    div
-      = turbo_stream_from "rooms"
-      #rooms.my-2
-        = render @rooms
+.mx-auto.px-3
+  .flex.gap-4.bg-blue-100.px-5.py-2  
+    .bg-white.px-4.py-3.col-span-2
+      h5.font-bold.py-2.text-center Hi #{@current_user.username}
+      h4.text-black.font-semibold.mb-2 All Users
+      div.bg-blue-200.rounded-xl.max-w-full.overflow-scroll.px-3.py-3
+        = turbo_stream_from "users"
+        #users
+          = render @users
 
-  .col-span-2
+      h4.mt-10 Group
+      = render partial: "layouts/new_room_form"
+      div
+        = turbo_stream_from "rooms"
+        #rooms.my-2
+          = render @rooms
+
+    .col-span-2
       .py-2
-      - if @single_room
-        h4.text-center = @single_room.name
-        = turbo_stream_from @single_room
+        - if @single_room
+          h4.text-center.bg-blue-500.px-3.py-2.rounded-md.text-white.font-semibold = @single_room.name
+          = turbo_stream_from @single_room
       #messages
         = render @messages
         = render partial: 'layouts/new_message_form'
-    
+

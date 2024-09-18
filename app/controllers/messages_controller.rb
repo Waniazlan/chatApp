@@ -9,4 +9,14 @@ class MessagesController < ApplicationController
     def msg_params
       params.require(:message).permit(:content)
     end
-  end
+
+    def destroy
+      @room = Room.find(params[:article_id])
+      @message = @Room.messages.find(params[:id])
+      @message.destroy
+      redirect_to article_path(@room), status: :see_other
+    end
+   
+   end
+
+ 

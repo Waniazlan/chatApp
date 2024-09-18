@@ -1,8 +1,10 @@
-.cont-#{message.user.id}
-  .msg#{message.user.id}
+- user_id = current_user&.id
+
+div class="cont-#{user_id} flex justify-end"
+  div class="message-box msg-#{user_id} bg-blue-500 p-2 rounded-lg"
     - unless message.room.is_private
-      h6.font-semibold.text-green-700.text-sm
-      = message.user.username
-      p.text-gray-200
+      h6 class="name font-bold text-white"
+        = message.user.username
+    p class="text-white"
       = message.content
-      = button_to 'Delete', room_message_path(message.room, message), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+      

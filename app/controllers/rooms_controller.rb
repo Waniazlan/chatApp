@@ -25,4 +25,14 @@ class RoomsController < ApplicationController
   
     render "index"
   end
+
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    respond_to do |format|
+      format.html { redirect_to index_path, notice: 'Room was successfully deleted.' }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@room) }
+      render "index"
+    end
+  end
 end
