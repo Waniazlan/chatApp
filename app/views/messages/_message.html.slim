@@ -1,7 +1,8 @@
 .cont-#{message.user.id}
-  .message-box.msg-#{message.user.id}
+  .msg#{message.user.id}
     - unless message.room.is_private
-      h6.name.font-semibold.text-gray-700
+      h6.font-semibold.text-green-700.text-sm
       = message.user.username
-    p.mt-1.text-gray-800
-    = message.content
+      p.text-gray-200
+      = message.content
+      = button_to 'Delete', room_message_path(message.room, message), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
